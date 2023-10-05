@@ -10,7 +10,6 @@ import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
-import org.thymeleaf.spring6.templateresource.SpringResourceTemplateResource;
 import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 
 @Configuration
