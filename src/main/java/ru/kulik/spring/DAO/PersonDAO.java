@@ -39,4 +39,16 @@ public class PersonDAO {
         person.setId(++PEOPLE_COUNT);
         people.add(person);
     }
+
+    public void update(int id, Person personUpdate) {
+        Person person = show(id);
+        person.setName(personUpdate.getName());
+    }
+
+    public void delete(int id) {
+        Person person = show(id);
+        people.remove(person);
+        // или используем лямбда выражение
+        // people.removeIf(p -> p.getId() == id);
+    }
 }
