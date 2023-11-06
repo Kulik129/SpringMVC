@@ -5,16 +5,14 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
-
-
 public class Person {
     private int id;
-    @NotEmpty(message = "Имя не может быть пустым")
-    @Size(min = 2, max = 20, message = "Превышен размер поля")
+    @NotEmpty(message = "The name cannot be empty")
+    @Size(min = 2, max = 20, message = "Field size exceeded")
     private String name;
     @Min(value = 0, message = "Age non zero")
     private int age;
-    @NotEmpty(message = "Email не может быть пустым")
+    @NotEmpty(message = "Email cannot be empty")
     @Email
     private String email;
 

@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.kulik.spring.DAO.PersonDAO;
 import ru.kulik.spring.models.Person;
+import ru.kulik.spring.util.PersonaValidator;
 
 
 @Controller
@@ -16,6 +17,8 @@ import ru.kulik.spring.models.Person;
 public class PeopleController {
     @Autowired
     private PersonDAO personDAO;
+    @Autowired
+    private PersonaValidator personaValidator;
 
     @GetMapping()
     public String index(Model model) {
@@ -36,6 +39,7 @@ public class PeopleController {
     }
     @PostMapping()
     public String create(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult){
+        personaValidator.validate(person, bindingResult);
         if (bindingResult.hasErrors()) {
             return "people/new";
         }
@@ -52,6 +56,7 @@ public class PeopleController {
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("person")@Valid Person person, BindingResult bindingResult,
                          @PathVariable("id")int id) {
+        personaValidator.validate(person, bindingResult);
         if (bindingResult.hasErrors()){
             return "people/edit";
         }
